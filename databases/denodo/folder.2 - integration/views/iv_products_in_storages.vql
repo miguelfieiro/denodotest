@@ -1,0 +1,2 @@
+﻿CREATE OR REPLACE VIEW iv_products_in_storages FOLDER = '/2 - integration' AS SELECT bv_product.productname AS product_name, count(*) AS amount FROM (bv_product AS bv_product INNER JOIN bv_wo_stock AS bv_wo_stock ON bv_product.productid = bv_wo_stock.product_id ) INNER JOIN bv_wo_storages AS bv_wo_storages ON bv_wo_stock.storage_id = bv_wo_storages.id  GROUP BY bv_product.productname;
+

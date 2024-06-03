@@ -1,0 +1,6 @@
+﻿CREATE OR REPLACE ASSOCIATION a_hr_jobs_employee REFERENTIAL CONSTRAINT 
+FOLDER = '/6 - associations'
+    ENDPOINT bv_hr_employees bv_hr_jobs PRINCIPAL (0,1)
+    ENDPOINT bv_hr_jobs bv_hr_employees (0,*)
+    ADD MAPPING job_id=job_id;
+

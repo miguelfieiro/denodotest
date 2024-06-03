@@ -1,0 +1,2 @@
+﻿CREATE OR REPLACE VIEW iv_interactions FOLDER = '/2 - integration' AS SELECT status_code, interaction_date, interaction_phone, case_id, agent_id, customer_code, interaction_ip FROM (SELECT customer_code, status_code, date_call_received AS interaction_date, case_id, caller_phone AS interaction_phone, agent_id FROM bv_cc_service_call EXTENDED UNION ALL SELECT customer_code, customer_ip AS interaction_ip, agent_id, status_code, sr_date AS interaction_date FROM bv_support_get_all_service_request) ORDER BY interaction_date DESC;
+
