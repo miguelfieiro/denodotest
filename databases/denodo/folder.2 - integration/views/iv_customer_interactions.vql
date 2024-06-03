@@ -1,4 +1,4 @@
-﻿CREATE OR REPLACE VIEW iv_customer_interactions FOLDER = '/2 - integration' DESCRIPTION = 'Descripcion'  AS SELECT customer_code AS customer_code, nest(agent_id, interaction_date, case_id, interaction_phone, interaction_ip) AS interactions FROM iv_interactions GROUP BY customer_code;
+﻿CREATE OR REPLACE VIEW iv_customer_interactions FOLDER = '/2 - integration' AS SELECT customer_code AS customer_code, nest(agent_id, interaction_date, case_id, interaction_phone, interaction_ip) AS interactions FROM iv_interactions GROUP BY customer_code;
 
 ALTER VIEW iv_customer_interactions
  LAYOUT (iv_interactions = [0, 0, 200, 200]);
