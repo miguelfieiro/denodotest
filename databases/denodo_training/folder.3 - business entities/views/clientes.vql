@@ -1,0 +1,5 @@
+﻿CREATE OR REPLACE VIEW clientes FOLDER = '/3 - business entities' AS SELECT bv_cc_customer.customer_id AS customer_id, bv_cc_customer.customer_name AS customer_name, bv_cc_customer.customer_address AS customer_address, bv_cc_customer.phone_number AS phone_number, bv_cc_customer.customer_code AS customer_code, bv_cc_customer.job_title AS job_title, bv_cc_customer.other_details AS other_details FROM bv_cc_customer;
+
+ALTER VIEW clientes
+ LAYOUT (bv_cc_customer = [20, 20, 200, 200]);
+
