@@ -24,7 +24,8 @@ CREATE OR REPLACE TABLE bv_cc_customer I18N us_est (
         other_details:text (sourcetypeid = '12', sourcetyperadix = '10', sourcetypesize = '1000')
     )
     FOLDER = '/1 - connectivity/2 - base views'
-    CACHE OFF
+    CACHE FULL
+    BATCHSIZEINCACHE DEFAULT
     TIMETOLIVEINCACHE DEFAULT
     ADD SEARCHMETHOD bv_cc_customer(
         I18N us_est

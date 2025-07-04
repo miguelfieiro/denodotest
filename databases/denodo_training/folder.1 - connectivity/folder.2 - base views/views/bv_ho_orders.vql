@@ -22,7 +22,8 @@ CREATE OR REPLACE TABLE bv_ho_orders I18N us_pst (
         dateclosed:timestamp (sourcetypeid = '93', sourcetyperadix = '10', sourcetypedecimals = '6', sourcetypesize = '11')
     )
     FOLDER = '/1 - connectivity/2 - base views'
-    CACHE OFF
+    CACHE FULL
+    BATCHSIZEINCACHE DEFAULT
     TIMETOLIVEINCACHE DEFAULT
     ADD SEARCHMETHOD bv_ho_orders(
         I18N us_pst

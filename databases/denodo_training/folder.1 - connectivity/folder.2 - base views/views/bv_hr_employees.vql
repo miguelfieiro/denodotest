@@ -42,7 +42,8 @@ CREATE OR REPLACE TABLE bv_hr_employees I18N us_pst (
     )
     FOLDER = '/1 - connectivity/2 - base views'
     CONSTRAINT 'EMP_EMP_ID_PK' PRIMARY KEY ( 'employee_id' )
-    CACHE OFF
+    CACHE FULL
+    BATCHSIZEINCACHE DEFAULT
     TIMETOLIVEINCACHE DEFAULT
     ADD SEARCHMETHOD bv_hr_employees(
         I18N us_pst
