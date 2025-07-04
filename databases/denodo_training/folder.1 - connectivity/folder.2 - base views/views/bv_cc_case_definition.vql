@@ -1,0 +1,47 @@
+﻿# REQUIRES-PROPERTIES-FILE - # Do not remove this comment!
+CREATE OR REPLACE WRAPPER JDBC bv_cc_case_definition
+    FOLDER = '/1 - connectivity/2 - base views'
+    DATASOURCENAME=ds_call_center
+    SCHEMANAME='${databases.denodo_training.folder.1 - connectivity.folder.2 - base views.views.jdbc.bv_cc_case_definition.SCHEMANAME}' 
+    RELATIONNAME='CASE_DEFINITION' 
+    OUTPUTSCHEMA (
+        case_id = 'CASE_ID' :'java.math.BigDecimal' (OPT) (sourcetypedecimals='0', sourcetyperadix='10', sourcetypesize='22', sourcetypeid='3', sourcetypename='NUMBER')  NOT NULL SORTABLE,
+        date_raised = 'DATE_RAISED' :'java.time.LocalDateTime' (OPT) (sourcetypedecimals='6', sourcetyperadix='10', sourcetypesize='11', sourcetypeid='93', sourcetypename='TIMESTAMP(6)')  SORTABLE,
+        date_closed = 'DATE_CLOSED' :'java.time.LocalDateTime' (OPT) (sourcetypedecimals='6', sourcetyperadix='10', sourcetypesize='11', sourcetypeid='93', sourcetypename='TIMESTAMP(6)')  SORTABLE,
+        case_status = 'CASE_STATUS' :'java.math.BigDecimal' (OPT) (sourcetypedecimals='0', sourcetyperadix='10', sourcetypesize='22', sourcetypeid='3', sourcetypename='NUMBER')  NOT NULL SORTABLE,
+        case_summary = 'CASE_SUMMARY' :'java.lang.String' (OPT) (sourcetyperadix='10', sourcetypesize='50', sourcetypeid='12', sourcetypename='VARCHAR2')  SORTABLE,
+        case_comments = 'CASE_COMMENTS' :'java.lang.String' (OPT) (sourcetyperadix='10', sourcetypesize='50', sourcetypeid='12', sourcetypename='VARCHAR2')  NOT NULL SORTABLE,
+        customer_code = 'CUSTOMER_CODE' :'java.lang.String' (OPT) (sourcetyperadix='10', sourcetypesize='50', sourcetypeid='12', sourcetypename='VARCHAR2')  SORTABLE
+    )
+    CONSTRAINT 'CASE_PK' PRIMARY KEY ( 'CASE_ID' )
+    INDEX 'CASE_PK' CLUSTER UNIQUE PRIMARY ( 'CASE_ID' );
+
+CREATE OR REPLACE TABLE bv_cc_case_definition I18N us_pst (
+        case_id:decimal (notnull, sourcetypeid = '3', sourcetyperadix = '10', sourcetypedecimals = '0', sourcetypesize = '22'),
+        date_raised:timestamp (sourcetypeid = '93', sourcetyperadix = '10', sourcetypedecimals = '6', sourcetypesize = '11'),
+        date_closed:timestamp (sourcetypeid = '93', sourcetyperadix = '10', sourcetypedecimals = '6', sourcetypesize = '11'),
+        case_status:decimal (notnull, sourcetypeid = '3', sourcetyperadix = '10', sourcetypedecimals = '0', sourcetypesize = '22'),
+        case_summary:text (sourcetypeid = '12', sourcetyperadix = '10', sourcetypesize = '50'),
+        case_comments:text (notnull, sourcetypeid = '12', sourcetyperadix = '10', sourcetypesize = '50'),
+        customer_code:text (sourcetypeid = '12', sourcetyperadix = '10', sourcetypesize = '50')
+    )
+    FOLDER = '/1 - connectivity/2 - base views'
+    CONSTRAINT 'CASE_PK' PRIMARY KEY ( 'case_id' )
+    CACHE OFF
+    TIMETOLIVEINCACHE DEFAULT
+    ADD SEARCHMETHOD bv_cc_case_definition(
+        I18N us_pst
+        CONSTRAINTS (
+             ADD case_id (any) OPT ANY
+             ADD date_raised (any) OPT ANY
+             ADD date_closed (any) OPT ANY
+             ADD case_status (any) OPT ANY
+             ADD case_summary (any) OPT ANY
+             ADD case_comments (any) OPT ANY
+             ADD customer_code (any) OPT ANY
+        )
+        OUTPUTLIST (case_comments, case_id, case_status, case_summary, customer_code, date_closed, date_raised
+        )
+        WRAPPER (jdbc bv_cc_case_definition)
+    );
+

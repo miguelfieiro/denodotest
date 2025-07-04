@@ -1,0 +1,63 @@
+﻿CREATE OR REPLACE REST WEBSERVICE ws_cust_prod_jobs
+    CONNECTION (
+        CHUNKSIZE = 1000
+        CHUNKTIMEOUT = 1000
+        QUERYTIMEOUT = 100000
+        POOLENABLED = true
+        POOLINITSIZE = 0
+        POOLMAXACTIVE = 30
+    )
+    DEFAULTREPRESENTATION = HTML
+    SUPPORTEDREPRESENTATIONS (HTML, XML, JSON)
+    RESOURCES (
+        VIEW bv_product FIELDS (
+            description : 'text', 
+            warnings : 'text', 
+            numresults : 'text', 
+            productid : 'int', 
+            productname : 'text', 
+            productprice : 'float', 
+            category : 'getallproductdetails_category', 
+            characteristics : 'getallproductdetails_characteristics', 
+            accessories : 'getallproductdetails_accessories'
+        ),
+        VIEW bv_wo_customer FIELDS (
+            id : 'decimal', 
+            customer_code_internal : 'text', 
+            first_name : 'text', 
+            last_name : 'text', 
+            email : 'text', 
+            phone : 'text', 
+            main_address : 'text', 
+            main_postcode : 'text', 
+            main_country : 'text', 
+            registered_date : 'timestamp'
+        ),
+        VIEW bv_hr_jobs FIELDS (
+            job_id : 'text', 
+            job_title : 'text', 
+            min_salary : 'int', 
+            max_salary : 'int'
+        ),
+        VIEW bv_hr_employees FIELDS (
+            employee_id : 'int', 
+            first_name : 'text', 
+            last_name : 'text', 
+            email : 'text', 
+            phone_number : 'text', 
+            hire_date : 'timestamp', 
+            job_id : 'text', 
+            salary : 'decimal', 
+            commission_pct : 'decimal', 
+            manager_id : 'int', 
+            department_id : 'int'
+        )
+    )
+    ASSOCIATIONS ( a_hr_jobs_employee )
+    OPTIONS ( NULLVALUESASEMPTYXMLELEMENTS = false
+        ALLOW_CORS_ORIGINS (*) DISABLED
+        MAX_ROWS_PER_PAGE = 1000
+        PROCESS_FUNCTIONS_IN_SELECT_PARAMETER = true ) 
+    OPENAPI2 ( API_VERSION = '1.0.0' ) 
+    FOLDER = '/5 - data services';
+
