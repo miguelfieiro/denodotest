@@ -17,21 +17,21 @@
     OPERATION 'getCustomerInteractions' (
         TYPE SELECT
         SCHEMA VIEW iv_customer_interactions
-        VQL = 'SELECT interactions FROM denodo_training.iv_customer_interactions ^ExecuteIfIsNotNull("WHERE ",@WHEREEXPRESSION,"") CONTEXT (''i18n'' = ''au_cst''^ExecuteIfIsNotNull(", ",@VERBOSEERRORS,"")^ExecuteIfIsNotNull(", ",@CONTEXTEXPRESSION,""))'
+        VQL = 'SELECT detalles_interacciones FROM denodo_training.iv_customer_interactions ^ExecuteIfIsNotNull("WHERE ",@WHEREEXPRESSION,"") CONTEXT (''i18n'' = ''au_cst''^ExecuteIfIsNotNull(", ",@VERBOSEERRORS,"")^ExecuteIfIsNotNull(", ",@CONTEXTEXPRESSION,""))'
         INPUTS 'getCustomerInteractions' (
-            'CUSTOMER_CODE_EDIT' customer_code_edit:'text' '=' 
+            'CODIGO_CLIENTE_EDITAR' codigo_cliente_editar:'text' '=' 
         )
         OUTPUT 
             'IV_CUSTOMER_INTERACTIONSReturn': Array of ( 'getCustomerInteractionsRow': Register of (
-                interactions : '_array_register_agent_id_interaction_date_case_id_interaction_phone_interaction_ip'
+                detalles_interacciones : '_array_register_agent_id_interaction_date_case_id_interaction_phone_interaction_ip'
             ) (
-                    '/interactions'='INTERACTIONS':'_array_register_agent_id_interaction_date_case_id_interaction_phone_interaction_ip' / '_register_agent_id_interaction_date_case_id_interaction_phone_interaction_ip',
-                    '/interactions/agent_id'='AGENT_ID',
-                    '/interactions/case_id'='CASE_ID',
-                    '/interactions/interaction_date'='INTERACTION_DATE',
-                    '/interactions/interaction_ip'='INTERACTION_IP',
-                    '/interactions/interaction_phone'='INTERACTION_PHONE',
-                    '/customer_code_edit'='CUSTOMER_CODE_EDIT'))
+                    '/codigo_cliente_editar'='CODIGO_CLIENTE_EDITAR',
+                    '/detalles_interacciones/interaction_phone'='DETALLES_INTERACCIONES',
+                    '/detalles_interacciones/agent_id'='DETALLES_INTERACCIONES',
+                    '/detalles_interacciones/interaction_ip'='DETALLES_INTERACCIONES',
+                    '/detalles_interacciones/case_id'='DETALLES_INTERACCIONES',
+                    '/detalles_interacciones/interaction_date'='DETALLES_INTERACCIONES',
+                    '/detalles_interacciones'='DETALLES_INTERACCIONES':'_array_register_agent_id_interaction_date_case_id_interaction_phone_interaction_ip' / '_register_agent_id_interaction_date_case_id_interaction_phone_interaction_ip'))
     )
     FOLDER = '/5 - data services';
 
