@@ -1,0 +1,5 @@
+﻿CREATE OR REPLACE VIEW orders FOLDER = '/3 - business entities' AS SELECT id, order_id, product_id, customer_code, status, date_placed, date_delivered, date_closed FROM (SELECT order_id, product_id, date_closed, date_placed, date_delivered, customer_code, status, id FROM iv_orders_current EXTENDED UNION ALL SELECT status, customer_code, id, datedelivered AS date_delivered, dateplaced AS date_placed, product_id, order_id, dateclosed AS date_closed FROM iv_orders_historical);
+
+ALTER VIEW orders
+ LAYOUT (iv_orders_current = [20, 20, 200, 200], iv_orders_historical = [286, 31, 200, 200]);
+

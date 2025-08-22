@@ -1,0 +1,5 @@
+﻿CREATE OR REPLACE VIEW iv_product_details_flatten FOLDER = '/2 - integration' AS SELECT code AS code, description AS description, warnings AS warnings, numresults AS numresults, productid AS productid, productname AS productname, productprice AS productprice, category AS category, characteristics AS characteristics, accessories_productid AS accessories_productid, accessories_productprice AS accessories_productprice, accessories_productname AS accessories_productname FROM FLATTEN bv_product AS v ( v.accessories);
+
+ALTER VIEW iv_product_details_flatten
+ LAYOUT (bv_product = [20, 20, 200, 200]);
+

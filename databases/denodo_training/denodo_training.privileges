@@ -1,0 +1,3 @@
+ALTER ROLE rol_demos
+GRANT ADMIN ON denodo_training;
+
