@@ -1,5 +1,0 @@
-﻿CREATE OR REPLACE VIEW productos FOLDER = '/3 - business entities' AS SELECT bv_product.code AS code, bv_product.description AS description, bv_product.warnings AS warnings, bv_product.numresults AS numresults, bv_product.productid AS productid, bv_product.productname AS productname, bv_product.productprice AS productprice, bv_product.category AS category, bv_product.characteristics AS characteristics, bv_product.accessories AS accessories FROM bv_product;
-
-ALTER VIEW productos
- LAYOUT (bv_product = [20, 20, 200, 200]);
-

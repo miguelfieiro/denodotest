@@ -1,2 +1,0 @@
-﻿UNDEPLOY IF EXISTS WEBSERVICE ws_all_orders;
-

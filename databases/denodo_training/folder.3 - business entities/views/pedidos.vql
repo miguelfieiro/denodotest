@@ -1,5 +1,0 @@
-﻿CREATE OR REPLACE VIEW pedidos FOLDER = '/3 - business entities' AS SELECT iv_orders.id AS id, iv_orders.order_id AS order_id, iv_orders.product_id AS product_id, iv_orders.customer_code AS customer_code, iv_orders.status AS status, iv_orders.date_placed AS date_placed, iv_orders.date_delivered AS date_delivered, iv_orders.date_closed AS date_closed FROM iv_orders;
-
-ALTER VIEW pedidos
- LAYOUT (iv_orders = [20, 20, 200, 200]);
-
