@@ -1,0 +1,6 @@
+﻿CREATE OR REPLACE ASSOCIATION a_product_storage REFERENTIAL CONSTRAINT 
+FOLDER = '/6 - associations'
+    ENDPOINT product bv_product PRINCIPAL (1)
+    ENDPOINT storage iv_product_storage (0,*)
+    ADD MAPPING productid=productid;
+

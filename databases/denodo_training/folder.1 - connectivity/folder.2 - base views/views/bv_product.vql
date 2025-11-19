@@ -59,7 +59,7 @@ CREATE OR REPLACE TABLE bv_product I18N us_pst (
         accessories:getallproductdetails_accessories
     )
     FOLDER = '/1 - connectivity/2 - base views'
-    CACHE FULL
+    CACHE OFF
     BATCHSIZEINCACHE DEFAULT
     TIMETOLIVEINCACHE DEFAULT
     ADD SEARCHMETHOD bv_product(
