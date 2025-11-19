@@ -1,0 +1,6 @@
+﻿CREATE OR REPLACE ASSOCIATION a_service_calls_customers REFERENTIAL CONSTRAINT 
+FOLDER = '/6 - associations'
+    ENDPOINT customer bv_cc_customer PRINCIPAL (1)
+    ENDPOINT service_call bv_cc_service_call (0,*)
+    ADD MAPPING customer_code=customer_code;
+

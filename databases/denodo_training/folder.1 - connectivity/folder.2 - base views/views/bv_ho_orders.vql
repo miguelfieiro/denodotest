@@ -15,13 +15,14 @@ CREATE OR REPLACE WRAPPER JDBC bv_ho_orders
 
 CREATE OR REPLACE TABLE bv_ho_orders I18N us_pst (
         id:decimal (sourcetypeid = '3', sourcetyperadix = '10', sourcetypedecimals = '0', sourcetypesize = '38'),
-        customer_code:text (sourcetypeid = '12', sourcetyperadix = '10', sourcetypesize = '2650'),
+        customer_code:text (sourcetypeid = '12', sourcetyperadix = '10', sourcetypesize = '2650') TAGS (confidential),
         status:text (sourcetypeid = '12', sourcetyperadix = '10', sourcetypesize = '50'),
         dateplaced:timestamp (sourcetypeid = '93', sourcetyperadix = '10', sourcetypedecimals = '6', sourcetypesize = '11'),
-        datedelivered:timestamp (sourcetypeid = '93', sourcetyperadix = '10', sourcetypedecimals = '6', sourcetypesize = '11'),
+        datedelivered:timestamp (sourcetypeid = '93', sourcetyperadix = '10', sourcetypedecimals = '6', sourcetypesize = '11') TAGS (confidential),
         dateclosed:timestamp (sourcetypeid = '93', sourcetyperadix = '10', sourcetypedecimals = '6', sourcetypesize = '11')
     )
     FOLDER = '/1 - connectivity/2 - base views'
+    TAGS (confidential)
     CACHE OFF
     TIMETOLIVEINCACHE DEFAULT
     ADD SEARCHMETHOD bv_ho_orders(

@@ -16,7 +16,8 @@ CREATE OR REPLACE TABLE bv_cc_agent I18N us_est (
         agent_name:text (sourcetypeid = '12', sourcetyperadix = '10', sourcetypesize = '14')
     )
     FOLDER = '/1 - connectivity/2 - base views'
-    CACHE OFF
+    CACHE FULL
+    BATCHSIZEINCACHE DEFAULT
     TIMETOLIVEINCACHE DEFAULT
     ADD SEARCHMETHOD bv_cc_agent(
         I18N us_est
